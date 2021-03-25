@@ -6,7 +6,7 @@ APNS/2 is a go package designed for simple, flexible and fast Apple Push Notific
 
 ## Features
 
-- Uses new Apple APNs HTTP/2 connection
+- Uses new Apple APNs HTTP/2 connection1
 - Fast - See [notes on speed](https://github.com/JimmyZzzzz/apns2/wiki/APNS-HTTP-2-Push-Speed)
 - Works with go 1.7 and later
 - Supports new Apple Token Based Authentication (JWT)

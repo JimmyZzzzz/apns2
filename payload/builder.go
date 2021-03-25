@@ -272,6 +272,11 @@ func (p *Payload) Category(category string) *Payload {
 	return p
 }
 
+func (p *Payload) Image(image string) *Payload {
+	p.aps().Image = image
+	return p
+}
+
 // Mdm sets the mdm on the payload.
 // This is for Apple Mobile Device Management (mdm) payloads.
 //

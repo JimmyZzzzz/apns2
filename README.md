@@ -2,12 +2,12 @@
 
 APNS/2 is a go package designed for simple, flexible and fast Apple Push Notifications on iOS, OSX and Safari using the new HTTP/2 Push provider API.
 
-[![Build Status](https://travis-ci.org/sideshow/apns2.svg?branch=master)](https://travis-ci.org/sideshow/apns2)  [![Coverage Status](https://coveralls.io/repos/sideshow/apns2/badge.svg?branch=master&service=github)](https://coveralls.io/github/sideshow/apns2?branch=master)  [![GoDoc](https://godoc.org/github.com/sideshow/apns2?status.svg)](https://godoc.org/github.com/sideshow/apns2)
+[![Build Status](https://travis-ci.org/JimmyZzzzz/apns2.svg?branch=master)](https://travis-ci.org/JimmyZzzzz/apns2)  [![Coverage Status](https://coveralls.io/repos/JimmyZzzzz/apns2/badge.svg?branch=master&service=github)](https://coveralls.io/github/JimmyZzzzz/apns2?branch=master)  [![GoDoc](https://godoc.org/github.com/JimmyZzzzz/apns2?status.svg)](https://godoc.org/github.com/JimmyZzzzz/apns2)
 
 ## Features
 
 - Uses new Apple APNs HTTP/2 connection
-- Fast - See [notes on speed](https://github.com/sideshow/apns2/wiki/APNS-HTTP-2-Push-Speed)
+- Fast - See [notes on speed](https://github.com/JimmyZzzzz/apns2/wiki/APNS-HTTP-2-Push-Speed)
 - Works with go 1.7 and later
 - Supports new Apple Token Based Authentication (JWT)
 - Supports new iOS 10 features such as Collapse IDs, Subtitles and Mutable Notifications
@@ -22,7 +22,7 @@ APNS/2 is a go package designed for simple, flexible and fast Apple Push Notific
 - Install apns2:
 
 ```sh
-go get -u github.com/sideshow/apns2
+go get -u github.com/JimmyZzzzz/apns2
 ```
 
 If you are running the test suite you will also need to install testify:
@@ -39,8 +39,8 @@ import (
   "log"
   "fmt"
 
-  "github.com/sideshow/apns2"
-  "github.com/sideshow/apns2/certificate"
+  "github.com/JimmyZzzzz/apns2"
+  "github.com/JimmyZzzzz/apns2/certificate"
 )
 
 func main() {
@@ -52,7 +52,7 @@ func main() {
 
   notification := &apns2.Notification{}
   notification.DeviceToken = "11aa01229f15f0f0c52029d8cf8cd0aeaf2365fe4cebc4af26cd6d76b7919ef7"
-  notification.Topic = "com.sideshow.Apns2"
+  notification.Topic = "com.JimmyZzzzz.Apns2"
   notification.Payload = []byte(`{"aps":{"alert":"Hello!"}}`) // See Payload section below
 
   // If you want to test push notifications for builds running directly from XCode (Development), use
@@ -105,7 +105,7 @@ At a minimum, a _Notification_ needs a _DeviceToken_, a _Topic_ and a _Payload_.
 ```go
 notification := &apns2.Notification{
   DeviceToken: "11aa01229f15f0f0c52029d8cf8cd0aeaf2365fe4cebc4af26cd6d76b7919ef7",
-  Topic: "com.sideshow.Apns2",
+  Topic: "com.JimmyZzzzz.Apns2",
   Payload: []byte(`{"aps":{"alert":"Hello!"}}`),
 }
 ```
@@ -131,7 +131,7 @@ notification.Payload = payload
 client.Push(notification)
 ```
 
-Refer to the [payload](https://godoc.org/github.com/sideshow/apns2/payload) docs for more info.
+Refer to the [payload](https://godoc.org/github.com/JimmyZzzzz/apns2/payload) docs for more info.
 
 ## Response, Error handling
 
@@ -172,17 +172,17 @@ defer cancel()
 
 ## Speed & Performance
 
-Also see the wiki page on [APNS HTTP 2 Push Speed](https://github.com/sideshow/apns2/wiki/APNS-HTTP-2-Push-Speed).
+Also see the wiki page on [APNS HTTP 2 Push Speed](https://github.com/JimmyZzzzz/apns2/wiki/APNS-HTTP-2-Push-Speed).
 
 For best performance, you should hold on to an `apns2.Client` instance and not re-create it every push. The underlying TLS connection itself can take a few seconds to connect and negotiate, so if you are setting up an `apns2.Client` and tearing it down every push, then this will greatly affect performance. (Apple suggest keeping the connection open all the time).
 
 You should also limit the amount of `apns2.Client` instances. The underlying transport has a http connection pool itself, so a single client instance will be enough for most users (One instance can potentially do 4,000+ pushes per second). If you need more than this then one instance per CPU core is a good starting point.
 
-Speed is greatly affected by the location of your server and the quality of your network connection. If you're just testing locally, behind a proxy or if your server is outside USA then you're not going to get great performance. With a good server located in AWS, you should be able to get [decent throughput](https://github.com/sideshow/apns2/wiki/APNS-HTTP-2-Push-Speed).
+Speed is greatly affected by the location of your server and the quality of your network connection. If you're just testing locally, behind a proxy or if your server is outside USA then you're not going to get great performance. With a good server located in AWS, you should be able to get [decent throughput](https://github.com/JimmyZzzzz/apns2/wiki/APNS-HTTP-2-Push-Speed).
 
 ## Command line tool
 
-APNS/2 has a command line tool that can be installed with `go get github.com/sideshow/apns2/apns2`. Usage:
+APNS/2 has a command line tool that can be installed with `go get github.com/JimmyZzzzz/apns2/apns2`. Usage:
 
 ```
 apns2 --help

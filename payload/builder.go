@@ -19,6 +19,7 @@ type aps struct {
 	Sound            interface{} `json:"sound,omitempty"`
 	ThreadID         string      `json:"thread-id,omitempty"`
 	URLArgs          []string    `json:"url-args,omitempty"`
+	Image            string      `json:"image,omitempty"`
 }
 
 type alert struct {
